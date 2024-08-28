@@ -1,0 +1,11 @@
+---
+about:
+  template: jolla
+  id: about-block
+  image: ""
+
+---
+
+# In China science is strategic.  
+
+This is a project for analysis of Science & Technology Trends according to Chinese strategic think tanks.

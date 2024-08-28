@@ -1,0 +1,62 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "China Science Vector"
+  image: "" #img/my_image.jpg
+  favicon: "img/favicon.svg" 
+
+  navbar:
+    background: primary
+    pinned: false
+    logo: "" #/img/logo.png
+    left:
+      - href: about.qmd
+        text: About
+      - href: bcas/bcas.qmd
+        text: BCAS
+      - href: bcae/about_bcae.qmd
+        text: BCAE 
+   # social media handles
+    right:
+        - icon: linkedin
+          href: https://www.linkedin.com/in/
+        - icon: envelope
+          aria-label: email
+          href: "mailto:dmitrymazanik42@gmail.com" 
+  
+  sidebar:
+    - id: id-bcas
+      title: "Bulletin of Chinese Academy of Sciences"
+      style: docked
+      background: none
+      contents:
+        - bcas/about_bcas.qmd
+        - bcas/0_bcas_dataset_scraping_quarto.ipynb
+        - bcas/1_bcas_eda_quarto.ipynb
+        - bcas/2_bcas_topic_model_quarto.ipynb
+        - bcas/3_bcas_topic_analysis_quarto.ipynb
+      collapse-level: 2
+  search: 
+    location: navbar
+
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer: "By Dzmitry Mazanik, 2024" 
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+    grid: 
+      body-width: 1000px
+      sidebar-width: 300px
+      margin-width: 300px
+
+fig-cap-location: top
+fig-align: center

@@ -1,0 +1,20 @@
+{
+  "bcae/about_bcae.qmd": {
+    "about_bcae.html": "2a3c48b1"
+  },
+  "index.qmd": {
+    "index.html": "2c24dd1c"
+  },
+  "about.qmd": {
+    "about.html": "8a8ad5b7"
+  },
+  "bcas/bcas.qmd": {
+    "bcas.html": "10c0141d"
+  },
+  "bcas/about_bcas.qmd": {
+    "about_bcas.html": "157d6bdf"
+  },
+  "bcas/1_bcas_eda_quarto.ipynb": {
+    "1_bcas_eda_quarto.html": "af9cb511"
+  }
+}
