@@ -12,14 +12,14 @@ website:
     pinned: false
     logo: "" #/img/logo.png
     left:
-      - href: bcas/bcas.qmd
+      - href: bcas/bcas_project.qmd
         text: BCAS
       - href: bcae/about_bcae.qmd
         text: BCAE 
    # social media handles
     right:
         - icon: linkedin
-          href: https://www.linkedin.com/in/
+          href: https://www.linkedin.com/in/dzmitry-mazanik-a84b51246/
         - icon: envelope
           aria-label: email
           href: "mailto:dmitrymazanik42@gmail.com" 
@@ -48,7 +48,7 @@ website:
 format:
   html:
     theme: 
-      light: cosmo
+      light: [cosmo, theme-light.scss]
       dark: [cosmo, theme-dark.scss]
     css: styles.css
     toc: false

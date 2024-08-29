@@ -1,12 +1,23 @@
 ---
-title: "Welcome to .CSV"
+title: "Welcome to .CSV!"
 about:
   template: jolla
   id: about-block
   image: ""
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/dzmitry-mazanik-a84b51246/
+    - icon: github
+      text: Github
+      href: https://github.com/DzmitryMazanik/china_science_vector
 
+format:
+  html:
+    grid: 
+      body-width: 1200px
 ---
-
+<div style="text-align: left;">
 I’m Dzmitry, a China analyst at the Center for System Analysis & Strategic Research in Minsk, Belarus. My primary focus is on China’s science and technology policies and industrial strategies.
 
 In today’s world, information about China is both abundant and increasingly restricted, creating a unique challenge for analysts. To navigate this complex landscape, I’m learning data science techniques that will enhance my understanding of Chinese technology.
@@ -14,3 +25,4 @@ In today’s world, information about China is both abundant and increasingly re
 China Science Vector is my personal lab for analyzing data related to China and technology. Here I share my case studies and analyze a lot of .csv!
 
 I invite your engagement! Whether you have suggestions, are interested in collaboration, or notice any errors, please don’t hesitate to reach out.
+</div>

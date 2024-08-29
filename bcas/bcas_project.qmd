@@ -1,0 +1,25 @@
+---
+title: Bulletin of Chinese Academy of Sciences Analysis
+sidebar: id-bcas
+format:
+  html:
+    grid: 
+      body-width: 1000px
+      sidebar-width: 300px
+      margin-width: 300px
+    toc: false
+    page-layout: full
+
+reference-location: margin
+citation-location: margin
+---
+
+This project aims to gain a deeper understanding of the dynamics and narratives presented in the Bulletin of the Chinese Academy of Sciences.
+
+It is structured into several chapters:
+
+- [**CAS & Science Policy**](about_bcas.qmd): This chapter discusses the importance of CAS and its Bulletin in understanding China's science and technology policy.
+- [**Building Dataset**](bcas_dataset_scraping.ipynb): Here, I outline the technical aspects of data scraping used to compile the dataset.
+- [**Exploratory Data Analysis**](bcas_eda.ipynb): In this section, I analyze the initial dataset to uncover preliminary insights.
+- [**Topic Modeling**](bcas_topic_model.ipynb): This chapter applies topic modeling techniques to introduce a new semantic layer to the dataset.
+- [**Topic Analysis**](bcas_topic_analysis.ipynb): Finally, this section reveals the underlying themes of the Bulletin and explores its dynamics over the years.
