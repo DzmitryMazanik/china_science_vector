@@ -34,7 +34,7 @@ website:
       contents:
         - bcas/about_bcas.qmd
         - bcas/bcas_dataset_scraping.ipynb
-        - bcas/bcas_eda_quarto.ipynb
+        - bcas/bcas_eda.ipynb
         - bcas/bcas_topic_model.ipynb
         - bcas/bcas_topic_analysis.ipynb
       collapse-level: 2
