@@ -1,7 +1,0 @@
----
-title: "Bulletin of Chinese Academy of Engineering"
-reference-location: margin
-
----
-
-Coming soon!
