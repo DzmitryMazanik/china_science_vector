@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>China Science Vector - Building Dataset</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../bcas/bcas_eda.html" rel="next">
+<link href="../bcas/about_bcas.html" rel="prev">
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">China Science Vector</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../bcas/bcas.html"> 
+<span class="menu-text">BCAS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../bcae/about_bcae.html"> 
+<span class="menu-text">BCAE</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:dmitrymazanik42@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/DzmitryMazanik/china_science_vector"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bcas/bcas_dataset_scraping.html">Building Dataset</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bcas/about_bcas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CAS &amp; Science Policy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bcas/bcas_dataset_scraping.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Building Dataset</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bcas/bcas_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bcas/bcas_topic_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building Topic Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bcas/bcas_topic_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Topic Analysis</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#scraping-data" id="toc-scraping-data" class="nav-link active" data-scroll-target="#scraping-data"><span class="header-section-number">1</span> Scraping Data</a>
+  <ul class="collapse">
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">1.1</span> Issues</a></li>
+  <li><a href="#articles" id="toc-articles" class="nav-link" data-scroll-target="#articles"><span class="header-section-number">1.2</span> Articles</a></li>
+  <li><a href="#article-data" id="toc-article-data" class="nav-link" data-scroll-target="#article-data"><span class="header-section-number">1.3</span> Article Data</a>
+  <ul class="collapse">
+  <li><a href="#define-elements" id="toc-define-elements" class="nav-link" data-scroll-target="#define-elements"><span class="header-section-number">1.3.1</span> Define Elements</a></li>
+  <li><a href="#similar-articles" id="toc-similar-articles" class="nav-link" data-scroll-target="#similar-articles"><span class="header-section-number">1.3.2</span> Similar Articles</a></li>
+  <li><a href="#merge-dataset" id="toc-merge-dataset" class="nav-link" data-scroll-target="#merge-dataset"><span class="header-section-number">1.3.3</span> Merge Dataset</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">2</span> Data Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#date-issue" id="toc-date-issue" class="nav-link" data-scroll-target="#date-issue"><span class="header-section-number">2.1</span> Date &amp; Issue</a></li>
+  <li><a href="#abstracts-keywords" id="toc-abstracts-keywords" class="nav-link" data-scroll-target="#abstracts-keywords"><span class="header-section-number">2.2</span> Abstracts &amp; Keywords</a></li>
+  <li><a href="#authors" id="toc-authors" class="nav-link" data-scroll-target="#authors"><span class="header-section-number">2.3</span> Authors</a></li>
+  <li><a href="#organizations" id="toc-organizations" class="nav-link" data-scroll-target="#organizations"><span class="header-section-number">2.4</span> Organizations</a></li>
+  <li><a href="#fund-projects" id="toc-fund-projects" class="nav-link" data-scroll-target="#fund-projects"><span class="header-section-number">2.5</span> Fund Projects</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Building Dataset</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="scraping-data" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Scraping Data</h1>
+<p>The old version of the BCAS website doesn’t use Java Script animations, so the classic <code>BeautifulSoup</code> library is enough at this stage.</p>
+<section id="issues" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="issues"><span class="header-section-number">1.1</span> Issues</h2>
+<p>First we should investigate the structure of the website. Article data we are looking for is in the section ‘Past Issues’ (过刊目录). Each issue page contains links to the full article in PDF or HTML, and abstracts (摘要) which we will explore next.</p>
+<p>Our final goal is to retrieve the data on the articles. The website structure shows that the links to the articles can be found inside issues. So, our first move is to get the links to the issues.</p>
+<p>Let’s build a function to extract all issues URLs on the catalogue page.</p>
+<div id="618d1981-d2f1-4618-85c8-41953b1b7245" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_urls(url):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        urls <span class="op">=</span> []</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># links to issues have 'a' tag</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract the href from each 'a'</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> link <span class="kw">in</span> links:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            href <span class="op">=</span> link.get(<span class="st">'href'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> urls</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error:"</span>, <span class="bu">str</span>(e))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once the links are retrieved we need to save them in a txt file.</p>
+<div id="99138a19-2c50-4985-a76e-f0e7bb3455a3" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_urls(urls, txt):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(txt, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> url.startswith(<span class="st">'issue_list.aspx?year_id='</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="bu">file</span>.write(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'http://old2022.bulletin.cas.cn/zgkxyyk/ch/reader/'</span> <span class="op">+</span> url <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Issues URLs saved to"</span>, txt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we can execute the two functions and get the links to the issues.</p>
+<div id="1f5a4c64-975f-4119-8ebf-bf0aa0e15bd1" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get URLs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> get_urls(url)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save to txt</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>save_urls(urls, issues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="articles" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="articles"><span class="header-section-number">1.2</span> Articles</h2>
+<p>Once we get the links to the issues, we can itearate through them and retrieve the links to the desired articles.</p>
+<div id="23c46336" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>articles <span class="op">=</span> <span class="st">'data/bcas_articles.txt'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(articles, <span class="st">"a"</span>) <span class="im">as</span> output:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># read the list of issues pages from issues.txt</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(issues, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        issue_urls <span class="op">=</span> <span class="bu">file</span>.read().splitlines()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate through each URL</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> url <span class="kw">in</span> issue_urls:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        article_urls <span class="op">=</span> get_urls(url)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> article_urls:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># save article URLs by appending to the file</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> article_url <span class="kw">in</span> article_urls:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> article_url.startswith(<span class="st">'view_abstract.aspx?file_no='</span>):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    output.write(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'http://old2022.bulletin.cas.cn/zgkxyyk/ch/reader/'</span> <span class="op">+</span> article_url <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Article URLs saved to"</span>, articles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="article-data" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="article-data"><span class="header-section-number">1.3</span> Article Data</h2>
+<p>Now we can scrape the data for each BCAS article. To do so we need to analyze the HTML structure of the pages and determine CSS selectors for the desired elements. Article pages contain a lot of data about publications:</p>
+<ul>
+<li>Title</li>
+<li>Date</li>
+<li>Issue</li>
+<li>Authors</li>
+<li>Affiliations</li>
+<li>Abstracts</li>
+<li>Keywords</li>
+<li>Associated fund projects</li>
+<li>Views and downloads statistics</li>
+</ul>
+<section id="define-elements" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="define-elements"><span class="header-section-number">1.3.1</span> Define Elements</h3>
+<p>We can start with a function which gets the desired element using beautifulsoup functionality.</p>
+<div id="56ff533e" class="cell" data-execution_count="220">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get text of an element if it exists</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_element(soup, selector):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    element <span class="op">=</span> soup.select_one(selector)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> element.get_text(strip<span class="op">=</span><span class="va">True</span>, separator<span class="op">=</span><span class="st">","</span>) <span class="cf">if</span> element <span class="cf">else</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we locate each element through CSS selectors and parse with “html.parser”. The function returns a dictionary with the extracted data.</p>
+<p>The parsing process may take some time and connection errors (from both sides) can disturb the process. That’s why it is better to wrap parsing in try-except block. If any exception occurs during the process, the function prints an error message with the URL and the specific error, and then returns None.</p>
+<div id="04b3263c" class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to extract text using BeautifulSoup</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_data(url):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        response.raise_for_status()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extracting data using CSS selectors</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        title_cn <span class="op">=</span> get_element(soup, <span class="st">'span#FileTitle'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        title_en <span class="op">=</span> get_element(soup, <span class="st">'span#EnTitle'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        author_cn <span class="op">=</span> get_element(soup, <span class="st">'div.cn_author'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        author_en <span class="op">=</span> get_element(soup, <span class="st">'div.en_author'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        org_cn <span class="op">=</span> get_element(soup, <span class="st">'div.cn_unit'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        org_en <span class="op">=</span> get_element(soup, <span class="st">'div.en_unit'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        abstract_cn <span class="op">=</span> get_element(soup, <span class="st">'div.zw_zhaiyao'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        abstract_en <span class="op">=</span> get_element(soup, <span class="st">'div.yw_zhaiyao'</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        keywords_cn <span class="op">=</span> get_element(soup, <span class="st">'div.zw_gjc'</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        keywords_en <span class="op">=</span> get_element(soup, <span class="st">'div.yw_gjc'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        fund_project <span class="op">=</span> get_element(soup, <span class="st">'div.jjxm'</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        date <span class="op">=</span> get_element(soup, <span class="st">'div.d_deta.fr'</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        views <span class="op">=</span> get_element(soup, <span class="st">'span#ClickNum'</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        downloads <span class="op">=</span> get_element(soup, <span class="st">'span#PDFClickNum'</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"url"</span>: url,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title_cn"</span>: title_cn,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title_en"</span>: title_en,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"author_cn"</span>: author_cn,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"author_en"</span>: author_en,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"org_cn"</span>: org_cn,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"org_en"</span>: org_en,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"abstract_cn"</span>: abstract_cn,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"abstract_en"</span>: abstract_en,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"keywords_cn"</span>: keywords_cn,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"keywords_en"</span>: keywords_en,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"fund_project"</span>: fund_project,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"date"</span>: date,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"views"</span>: views,</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"downloads"</span>: downloads,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"An error occurred while processing </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we need to werite the scraped data into a csv file.</p>
+<p>First, we open a csv file in the write mode and define the fieldnames, which are the same as the fields of the dictionary in the get_data() function. We use a pipe “|” as a delimeter.</p>
+<p>Next we open the articles.txt with the URLs and iterate through them retrieving the data, which is tehn stored in the csv.</p>
+<div id="b762bf25" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(dataset, mode<span class="op">=</span><span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> csv_file:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    fieldnames <span class="op">=</span> [</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"url"</span>, <span class="st">"date"</span>, <span class="st">"views"</span>, <span class="st">"downloads"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author_cn"</span>, <span class="st">"author_en"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"title_cn"</span>, <span class="st">"title_en"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"org_cn"</span>, <span class="st">"org_en"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"abstract_cn"</span>, <span class="st">"abstract_en"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"keywords_cn"</span>, <span class="st">"keywords_en"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"fund_project"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.DictWriter(csv_file, fieldnames<span class="op">=</span>fieldnames, delimiter<span class="op">=</span><span class="st">"|"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    writer.writeheader()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># read the list of URLs from the file</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(articles, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        article_urls <span class="op">=</span> <span class="bu">file</span>.read().splitlines()</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># iterate through each url, extract data, and write to csv</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> url <span class="kw">in</span> article_urls:</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> get_data(url)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> data:</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                writer.writerow(data)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data has been extracted and saved to </span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Due to some formatting issues the parsed data can contain new lines “/n” in some cases, breaking the lines. We can fix this issues with a simple fucntion which replaces all line breaks () in the content with an empty string and then adds a new line break before each occurrence of ‘http://old2022.bulletin.cas.cn/’.</p>
+<div id="e5730994" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fix broken lines in the csv</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fix_lines(dataset_csv, dataset_csv_fixed):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(dataset_csv, mode<span class="op">=</span><span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># replace all line endings with empty string to remove them</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> content.replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">''</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add a new line before each 'http' to separate URLs</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> content.replace(</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'http://old2022.bulletin.cas.cn/'</span>, <span class="st">'</span><span class="ch">\n</span><span class="st">http://old2022.bulletin.cas.cn/'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(dataset_csv_fixed, mode<span class="op">=</span><span class="st">'w'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> outfile:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        outfile.write(content)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>fix_lines(dataset, dataset_fixed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="similar-articles" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="similar-articles"><span class="header-section-number">1.3.2</span> Similar Articles</h3>
+<p>Our goal is to clasterize the articles using available texts – so the more useful texts we have, the better. On the pages there is a section called “Similar Articles” (相似文献). The titles of similar publications may be useful for topic modeling, for it increases the chances for articles with similar referencies to appear in the same cluster.</p>
+<p>Accessing this data requires clicking a “Similar Articles” button, otherwise the text is not present on the page. We can simulate clicking (and a do lot of other useful stuff) using <code>selenium</code> library.</p>
+<div id="2013c4e6" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support <span class="im">import</span> expected_conditions <span class="im">as</span> EC</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.common.exceptions <span class="im">import</span> TimeoutException</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.common.exceptions <span class="im">import</span> WebDriverException</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(similar_csv, mode<span class="op">=</span><span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> csv_file:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    fieldnames <span class="op">=</span> [<span class="st">"url"</span>, <span class="st">"similar"</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.DictWriter(csv_file, fieldnames<span class="op">=</span>fieldnames, delimiter<span class="op">=</span><span class="st">"|"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    writer.writeheader()</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initialize_driver():</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    firefox_options <span class="op">=</span> webdriver.FirefoxOptions()</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    firefox_options.add_argument(<span class="st">"--headless"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> webdriver.Firefox(options<span class="op">=</span>firefox_options)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> initialize_driver()</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(articles, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    urls <span class="op">=</span> <span class="bu">file</span>.read().splitlines()</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> url <span class="kw">in</span> urls:</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        driver.get(url)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        WebDriverWait(driver, <span class="dv">10</span>).until(EC.element_to_be_clickable(</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>            (By.XPATH, <span class="st">'//div[text()="相似文献"]'</span>))).click()</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        WebDriverWait(driver, <span class="dv">10</span>).until(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>            EC.presence_of_element_located((By.CLASS_NAME, <span class="st">"ArticleList"</span>)))</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        html <span class="op">=</span> driver.page_source</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># find all &lt;a&gt; with class "ArticleList"</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>, class_<span class="op">=</span><span class="st">'ArticleList'</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract the text from each element</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        similar_list <span class="op">=</span> [link.text.strip() <span class="cf">for</span> link <span class="kw">in</span> links]</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> TimeoutException:</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        similar_list <span class="op">=</span> [<span class="st">'time_error'</span>]</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> WebDriverException:</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        max_retries <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        retry_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> retry_count <span class="op">&lt;</span> max_retries:</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>                time.sleep(<span class="dv">3</span>)</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>                driver.quit()</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>                driver <span class="op">=</span> initialize_driver()</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>                driver.get(url)</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>                WebDriverWait(driver, <span class="dv">2</span>).until(EC.element_to_be_clickable(</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>                    (By.XPATH, <span class="st">'//div[text()="相似文献"]'</span>))).click()</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>                WebDriverWait(driver, <span class="dv">2</span>).until(</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>                    EC.presence_of_element_located((By.CLASS_NAME, <span class="st">"ArticleList"</span>)))</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>                html <span class="op">=</span> driver.page_source</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>                soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>                links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>, class_<span class="op">=</span><span class="st">'ArticleList'</span>)</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>                similar_list <span class="op">=</span> [link.text.strip() <span class="cf">for</span> link <span class="kw">in</span> links]</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> (WebDriverException, TimeoutException):</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>                retry_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> retry_count <span class="op">==</span> max_retries:</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>                    similar_list <span class="op">=</span> [<span class="st">'web_error'</span>]</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">'url'</span>: url, <span class="st">'similar'</span>: similar_list})</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(similar_csv, <span class="st">'a'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> csvfile:</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>            writer <span class="op">=</span> csv.DictWriter(csvfile, fieldnames<span class="op">=</span>[</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'url'</span>, <span class="st">'similar'</span>], delimiter<span class="op">=</span><span class="st">"|"</span>)</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>            writer.writerow({<span class="st">'url'</span>: url, <span class="st">'similar'</span>: similar_list})</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>driver.quit()</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data extracted and scaved to </span><span class="sc">{</span>similar_csv<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="merge-dataset" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="merge-dataset"><span class="header-section-number">1.3.3</span> Merge Dataset</h3>
+<p>Once we have one dataset with article metadata and the other with similar articles we can combine them into one. One way to do so fast and easy is through Pandas.</p>
+<p>We create two dataframes and merge them through SQL-like function.</p>
+<div id="eb5e803c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(dataset_fixed, sep<span class="op">=</span><span class="st">'|'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>similar_df <span class="op">=</span> pd.read_csv(similar_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can explore the dataset a bit.</p>
+<div id="2321bafd" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">url</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">views</th>
+<th data-quarto-table-cell-role="th">downloads</th>
+<th data-quarto-table-cell-role="th">author_cn</th>
+<th data-quarto-table-cell-role="th">author_en</th>
+<th data-quarto-table-cell-role="th">title_cn</th>
+<th data-quarto-table-cell-role="th">title_en</th>
+<th data-quarto-table-cell-role="th">org_cn</th>
+<th data-quarto-table-cell-role="th">org_en</th>
+<th data-quarto-table-cell-role="th">abstract_cn</th>
+<th data-quarto-table-cell-role="th">abstract_en</th>
+<th data-quarto-table-cell-role="th">keywords_cn</th>
+<th data-quarto-table-cell-role="th">keywords_en</th>
+<th data-quarto-table-cell-role="th">fund_project</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>中国科学院院刊:2024,39(1):17-26</td>
+<td>470</td>
+<td>448</td>
+<td>谭光明,,,贾伟乐,,,王展,,,元国军,,,邵恩,,,孙凝晖*</td>
+<td>TAN Guangming,,,JIA Weile,,,WANG Zhan,,,YUAN G...</td>
+<td>面向模拟智能的计算系统</td>
+<td>Computing system for simulation intelligence</td>
+<td>(中国科学院计算技术研究所 北京 100190)</td>
+<td>(Institute of Computing Technology, Chinese Ac...</td>
+<td>中文摘要:,科学研究中的计算机模拟称为科学模拟（scientific simulation）...</td>
+<td>Abstract:,This study refers computer simulatio...</td>
+<td>中文关键词:,科学模拟,模拟智能,人工智能,计算系统,Z级计算</td>
+<td>keywords:,scientific simulation,simulation int...</td>
+<td>基金项目:,国家杰出青年科学基金（T2125013）</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>And this is what the dataset woth references looks like.</p>
+<div id="a3b16b94" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">url</th>
+<th data-quarto-table-cell-role="th">similar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>[]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>['科研信息化发展态势和思考', '数据科学与计算智能：内涵、范式与机遇', '人工智能驱动...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>['人工智能驱动的科学研究新范式：从AI4S到智能科学', 'GPT技术变革对基础科学研究的...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>['信息化:从计算机科学到计算科学', '科学大数据智能分析软件的现状与趋势', '中国高通...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>['人工智能驱动的科学研究新范式：从AI4S到智能科学', '适度超前推动科研基础平台建设 ...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>There are multiple ways to combine these two datasets together. Now a SQL-like merge() function will do just fine.</p>
+<div id="88f909cc" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.merge(df, similar_df, on<span class="op">=</span><span class="st">'url'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e760e33c" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">url</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">views</th>
+<th data-quarto-table-cell-role="th">downloads</th>
+<th data-quarto-table-cell-role="th">author_cn</th>
+<th data-quarto-table-cell-role="th">author_en</th>
+<th data-quarto-table-cell-role="th">title_cn</th>
+<th data-quarto-table-cell-role="th">title_en</th>
+<th data-quarto-table-cell-role="th">org_cn</th>
+<th data-quarto-table-cell-role="th">org_en</th>
+<th data-quarto-table-cell-role="th">abstract_cn</th>
+<th data-quarto-table-cell-role="th">abstract_en</th>
+<th data-quarto-table-cell-role="th">keywords_cn</th>
+<th data-quarto-table-cell-role="th">keywords_en</th>
+<th data-quarto-table-cell-role="th">fund_project</th>
+<th data-quarto-table-cell-role="th">similar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>中国科学院院刊:2024,39(1):17-26</td>
+<td>470</td>
+<td>448</td>
+<td>谭光明,,,贾伟乐,,,王展,,,元国军,,,邵恩,,,孙凝晖*</td>
+<td>TAN Guangming,,,JIA Weile,,,WANG Zhan,,,YUAN G...</td>
+<td>面向模拟智能的计算系统</td>
+<td>Computing system for simulation intelligence</td>
+<td>(中国科学院计算技术研究所 北京 100190)</td>
+<td>(Institute of Computing Technology, Chinese Ac...</td>
+<td>中文摘要:,科学研究中的计算机模拟称为科学模拟（scientific simulation）...</td>
+<td>Abstract:,This study refers computer simulatio...</td>
+<td>中文关键词:,科学模拟,模拟智能,人工智能,计算系统,Z级计算</td>
+<td>keywords:,scientific simulation,simulation int...</td>
+<td>基金项目:,国家杰出青年科学基金（T2125013）</td>
+<td>['信息化:从计算机科学到计算科学', '科学大数据智能分析软件的现状与趋势', '中国高通...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="data-cleaning" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Data Cleaning</h1>
+<p>The data we got is quite messy with lots of missing values, extra comas and other punctuation signs, some columns can be split into two to make more sense.</p>
+<p>In this cases we can do some cleaning with <code>pandas</code> and regular expressions.</p>
+<section id="date-issue" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="date-issue"><span class="header-section-number">2.1</span> Date &amp; Issue</h2>
+<p>First, we should transform strings like this ‘2024,39(1):0-0’ into more meaningful form.</p>
+<p>This string contains three features – year, issue, and pages. The pattern for separating these features is consistent throughout the dataset, so by a simple split by coma and colon we can create columns ‘date’, ‘issue’, and ‘pages’.</p>
+<div id="3f249fd3" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 中国科学院院刊:2024,39(1):0-0</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> regex <span class="im">as</span> re</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'date'</span>] <span class="op">=</span> df[<span class="st">'date'</span>].<span class="bu">str</span>.replace(<span class="st">'中国科学院院刊:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'date'</span>, <span class="st">'issue'</span>]] <span class="op">=</span> df[<span class="st">'date'</span>].<span class="bu">str</span>.split(<span class="st">','</span>, n<span class="op">=</span><span class="dv">1</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'issue'</span>, <span class="st">'page'</span>]] <span class="op">=</span> df[<span class="st">'issue'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>, n<span class="op">=</span><span class="dv">1</span>, expand<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5cbc4529" class="cell" data-execution_count="78">
+<div class="cell-output cell-output-display" data-execution_count="78">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">issue</th>
+<th data-quarto-table-cell-role="th">page</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2024</td>
+<td>39(1)</td>
+<td>0-0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2024</td>
+<td>39(1)</td>
+<td>1-9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2024</td>
+<td>39(1)</td>
+<td>10-16</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2024</td>
+<td>39(1)</td>
+<td>17-26</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2024</td>
+<td>39(1)</td>
+<td>27-33</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="abstracts-keywords" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="abstracts-keywords"><span class="header-section-number">2.2</span> Abstracts &amp; Keywords</h2>
+<p>Next we can remove irrelevant words like ‘中文摘要:’, ‘Abstract:’, ‘中文关键词:’, ‘keywords:’, ‘基金项目:’. This can be done through regular expression replacement.</p>
+<div id="f8d7b9dc" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove redundant text and strip comas</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'abstract_cn'</span>] <span class="op">=</span> df[<span class="st">'abstract_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'中文摘要:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.lstrip(<span class="st">','</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'abstract_en'</span>] <span class="op">=</span> df[<span class="st">'abstract_en'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Abstract:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.lstrip(<span class="st">','</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'keywords_cn'</span>] <span class="op">=</span> df[<span class="st">'keywords_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'中文关键词:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.lstrip(<span class="st">','</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'keywords_en'</span>] <span class="op">=</span> df[<span class="st">'keywords_en'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'keywords:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.lstrip(<span class="st">','</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'fund_project'</span>] <span class="op">=</span> df[<span class="st">'fund_project'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'基金项目:'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.lstrip(<span class="st">','</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="084792b2" class="cell" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">abstract_cn</th>
+<th data-quarto-table-cell-role="th">abstract_en</th>
+<th data-quarto-table-cell-role="th">keywords_cn</th>
+<th data-quarto-table-cell-role="th">keywords_en</th>
+<th data-quarto-table-cell-role="th">fund_project</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>中文摘要:,文章将“智能化科研”（AI4R）称为第五科研范式，概括它的一系列特征包括：（1）...</td>
+<td>Abstract:,This article refers to “AI for Resea...</td>
+<td>中文关键词:,智能化科研,涌现,组合爆炸问题,非确定计算,大科学模型,科研大平台</td>
+<td>keywords:,AI4R,emergence,combinatorial explosi...</td>
+<td>基金项目:</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="authors" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="authors"><span class="header-section-number">2.3</span> Authors</h2>
+<p>We need to clean the author column as well and remove extra columns, numbers and other symbols like “*“.</p>
+<div id="849ee768" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> normalize_text(text):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove numbers</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\d+'</span>, <span class="st">''</span>, text)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># replace multiple commas with one</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r',+'</span>, <span class="st">','</span>, text)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove asterisks</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\*'</span>, <span class="st">''</span>, text)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove any leading or trailing commas and whitespace</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.strip(<span class="st">','</span>).strip()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Some articles do not have a specified name of the author, but each publication is written by a person, so instead of NaN we fill missing values with “not_specified” text.</p>
+<div id="977ae106" class="cell" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">author_cn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>not_specified</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>李国杰</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>鄂维南</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>谭光明,贾伟乐,王展,元国军,邵恩,孙凝晖</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>王飞跃,王雨桐</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="organizations" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="organizations"><span class="header-section-number">2.4</span> Organizations</h2>
+<p>Cleaning organization data is a tricky part, beacuse this part is the most inconsistent and messy. Example of the organization description: (1.北京大学 北京 100871;2.北京科学智能研究院 北京 100084). One articles can be written by several people from different instituitions. The affiliation info also includes data about city, postal codes and job titles in a lot of cases.</p>
+<div id="a85e87d2" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>orgs <span class="op">=</span> df[[<span class="st">'url'</span>, <span class="st">'org_cn'</span>]].dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8b14a114" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace '!' with a space and split on ';'</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>orgs[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs[<span class="st">'org_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'!'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.split(<span class="st">';'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># explode and strip whitespace and parentheses</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>orgs_expld <span class="op">=</span> orgs.explode(<span class="st">'org_cn'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">str</span>.strip().<span class="bu">str</span>.strip(<span class="st">'()'</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># remove sequences of 4 to 8 digits at the end and strip again</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r'\s*\d{4,8}\s*$'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>).<span class="bu">str</span>.strip()</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># remove digits and spaces or commas at any position and leading non-Chinese text followed by a space</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r'^\d+\.\d*[\s,]*|\d+[\s,]*|^.+?\s+'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We don’t need the postal codes and job titles for our research, but the city data can be useful for geospatial analysis.</p>
+<p>We can get the relevant cities by checking what city from the list of Chinese cities (get it from Baidu) appears in the string.</p>
+<div id="240821fa" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a regex from the city list</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cities_list <span class="op">=</span> city_df[<span class="st">'city_cn'</span>].tolist()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>cities_pattern <span class="op">=</span> <span class="vs">r'\s*(?&lt;=)(\s*'</span> <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'|'</span>.join(<span class="bu">map</span>(re.escape, cities_list)) <span class="op">+</span> <span class="vs">r')\b'</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># compile the regex pattern</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>city_regex <span class="op">=</span> re.<span class="bu">compile</span>(cities_pattern)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the city from a string</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_city(text):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    match <span class="op">=</span> city_regex.search(text)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> match:</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> match.group(<span class="dv">0</span>)  <span class="co"># get the match</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'city_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">apply</span>(extract_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we need to remove the job titles from the strings.</p>
+<p>For this purpose we can create a list of job titles which appear in the dataset.</p>
+<div id="e114d0b4" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>job_titles <span class="op">=</span> [</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"所长"</span>, <span class="st">"研究员"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"院长"</span>, <span class="st">"校长"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"主席"</span>, <span class="st">"总经理"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"教授"</span>, <span class="st">"院士"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"博士"</span>, <span class="st">"学部委员"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"委员长"</span>, <span class="st">"组长"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"主任"</span>, <span class="st">"处长"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"部长"</span>, <span class="st">"主任"</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"党委书记"</span>, <span class="st">"秘书"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"局长"</span>, <span class="st">"总裁"</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"台长"</span>, <span class="st">"名誉"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"特邀顾问"</span>, <span class="st">"执行"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"主管"</span>, <span class="st">"工程师"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"专利代理人"</span>, <span class="st">"导师"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"助理"</span>, <span class="st">"书记"</span>, <span class="st">"理事长"</span>, <span class="st">"馆长"</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>job_titles_pattern <span class="op">=</span> <span class="st">'|'</span>.join([<span class="vs">fr'\s*</span><span class="sc">{</span>title<span class="sc">}</span><span class="vs">\s*'</span> <span class="cf">for</span> title <span class="kw">in</span> job_titles])</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> remove_job_titles(text):</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> re.sub(job_titles_pattern, <span class="st">''</span>, text).strip()</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">apply</span>(remove_job_titles)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="co"># remove some characters and 副 from job titles</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r"[、《》副]"</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co"># remove empty parentheses</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r"\(\)"</span>, <span class="st">""</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now the strings will look something like this:</p>
+<div id="6f5199ec" class="cell" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="52">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">url</th>
+<th data-quarto-table-cell-role="th">org_cn</th>
+<th data-quarto-table-cell-role="th">city_cn</th>
+<th data-quarto-table-cell-role="th">city_en</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>北京大学</td>
+<td>北京</td>
+<td>Beijing</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>北京科学智能研究院</td>
+<td>北京</td>
+<td>Beijing</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>中国科学院自动化研究所 复杂系统管理与控制国家重点实验室</td>
+<td>北京</td>
+<td>Beijing</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>澳门科技大学 创新工程学院</td>
+<td>澳门</td>
+<td>Macau</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>http://old2022.bulletin.cas.cn/zgkxyyk/ch/read...</td>
+<td>中国科学院自动化研究所 多模态人工智能系统全国重点实验室</td>
+<td>北京</td>
+<td>Beijing</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>The next important issue is the degree of detail about organizations we are interested in. The affiliation data includes in some cases the title of the head organization and a subdivision (lab, office, group, ). For now we will focus on the head organizations, e.g.&nbsp;if there is a string like ‘中国科学院自动化研究所 复杂系统管理与控制国家重点实验室’ we count it like ‘中国科学院自动化研究所’.</p>
+<p>This also can be achieved through regular exprssions.</p>
+<div id="9e24bdcc" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of head organizations</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>head_org_endings <span class="op">=</span> [<span class="st">"科学院"</span>, <span class="st">"研究所"</span>, <span class="st">"研究院"</span>, <span class="st">"大学"</span>, <span class="st">"学院"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create regex</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">'|'</span>.join(head_org_endings)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Regex pattern to detect Chinese characters</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>chinese_char_pattern <span class="op">=</span> re.<span class="bu">compile</span>(<span class="vs">r'[\u4e00-\u9fff]'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_head_org(text):</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> text.strip():</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> text  <span class="co"># Return the original text if it is empty or only whitespace</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the text contains any Chinese characters</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> chinese_char_pattern.search(text):</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> text  <span class="co"># Return the original text if it contains no Chinese characters</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check specifically for "中国科学院大学" ignoring other symbols or characters</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> re.search(<span class="vs">r"中国科学院大学"</span>, text):</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院大学"</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"中国科学院院刊"</span> <span class="kw">in</span> text:</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院院刊"</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"上海天文台"</span> <span class="kw">in</span> text:</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院上海天文台"</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"北京天文台"</span> <span class="kw">in</span> text:</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院北京天文台"</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"南京天文台"</span> <span class="kw">in</span> text:</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院南京天文台"</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"国家天文台"</span> <span class="kw">in</span> text:</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"中国科学院国家天文台"</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Special case for "中国科学院" followed by "研究所", "中心", or "研究院"</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>    zky_with_suffix_match <span class="op">=</span> re.search(<span class="vs">r"(中国科学院.*?(研究所|中心|研究院))"</span>, text)</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> zky_with_suffix_match:</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> zky_with_suffix_match.group(<span class="dv">1</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Search for the first occurrence of any of the common endings in the full text</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>    match <span class="op">=</span> re.search(<span class="vs">fr"(.+?(</span><span class="sc">{</span>pattern<span class="sc">}</span><span class="vs">))"</span>, text)</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> match:</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract and return the head organization</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> match.group(<span class="dv">1</span>)</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># No common ending found, consider the first part as the head organization</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> text.split()[<span class="dv">0</span>] <span class="cf">if</span> <span class="st">' '</span> <span class="kw">in</span> text <span class="cf">else</span> text</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function to the DataFrame</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>orgs_expld[<span class="st">'org_cn_head'</span>] <span class="op">=</span> orgs_expld[<span class="st">'org_cn'</span>].<span class="bu">apply</span>(extract_head_org)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fcd8107b" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>orgs_head <span class="op">=</span> orgs_expld[<span class="st">'org_cn_head'</span>].unique()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>orgs_head_df <span class="op">=</span> pd.DataFrame(orgs_head, columns<span class="op">=</span>[<span class="st">'org_cn_head'</span>])</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>orgs_head_df.to_csv(<span class="st">'data/bcas_orgs_head.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="64414cb2" class="cell" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="56">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">org_cn_head</th>
+<th data-quarto-table-cell-role="th">org_cn_head_clean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>北京师范大学</td>
+<td>北京师范大学</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>“万种园”项目首席科学家</td>
+<td>“万种园”项目</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>“中国科学与人文论坛”长</td>
+<td>中国科学与人文论坛</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>“论坛”处宣传</td>
+<td>“论坛”处宣传</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>)中国科学院</td>
+<td>中国科学院</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>The next step is to translate the data to English. Note that we need official English titles, so doing everything through machine translation is not the best fit.</p>
+<p>We can try to retrieve some English titles from Baidu using Beautiful Soup again.</p>
+<div id="b1e58b25" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_english_title(org_cn):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="st">'https://baike.baidu.com/item/'</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> base_url <span class="op">+</span> org_cn</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Processing: </span><span class="sc">{</span>org_cn<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> requests.get(url)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        response.raise_for_status()</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        soup <span class="op">=</span> BeautifulSoup(response.content, <span class="st">"html.parser"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># find divs with class "itemWrapper_yPk3z" or "itemWrapper_qgaYJ"</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        divs <span class="op">=</span> soup.find_all(</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'div'</span>, class_<span class="op">=</span>[<span class="st">'itemWrapper_yPk3z'</span>, <span class="st">'itemWrapper_qgaYJ'</span>])</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> div <span class="kw">in</span> divs:</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># find dt with "外文名"</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>            dt <span class="op">=</span> div.find(<span class="st">'dt'</span>, class_<span class="op">=</span><span class="st">'basicInfoItem_hdTH0 itemName_iCg2R'</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> dt <span class="kw">and</span> <span class="st">'外文名'</span> <span class="kw">in</span> dt.text:</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># find the dd element with class "basicInfoItem_hdTH0 itemValue_rxziX"</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                dd <span class="op">=</span> div.find(</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'dd'</span>, class_<span class="op">=</span><span class="st">'basicInfoItem_hdTH0 itemValue_rxziX'</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> dd:</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># extract English title</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                    span <span class="op">=</span> dd.find(<span class="st">'span'</span>, class_<span class="op">=</span><span class="st">'text_v1llE'</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> span:</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>                        english_title <span class="op">=</span> span.text.strip()</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">print</span>(</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>                            <span class="ss">f"Found English title for </span><span class="sc">{</span>org_cn<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>english_title<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">return</span> english_title</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No English title found for </span><span class="sc">{</span>org_cn<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error fetching data for </span><span class="sc">{</span>org_cn<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>orgs_head_clean_df[<span class="st">'org_cn_head_en'</span>] <span class="op">=</span> orgs_head_clean_df[<span class="st">'org_cn_head_clean'</span>].<span class="bu">apply</span>(</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>    fetch_english_title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Unfortunately, not all organizations are present on Baidu or have English translation. We can translate these with Google Translate through <code>deep_translator</code> library.</p>
+<div id="a5401b0f" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> deep_translator <span class="im">import</span> GoogleTranslator</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_translation(text):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> GoogleTranslator(source<span class="op">=</span><span class="st">'auto'</span>, target<span class="op">=</span><span class="st">'en'</span>).translate(<span class="bu">str</span>(text))</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span> <span class="im">as</span> e:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> e</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error translating text: </span><span class="sc">{</span>text<span class="sc">}</span><span class="ss">. Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'error'</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>tqdm.pandas()</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># translate only the rows where 'org_cn_head_en' is null</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>orgs_head_clean_df.loc[orgs_head_clean_df[<span class="st">'org_cn_head_en'</span>].isnull(</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>), <span class="st">'org_cn_head_en'</span>] <span class="op">=</span> orgs_head_clean_df.loc[orgs_head_clean_df[<span class="st">'org_cn_head_en'</span>].isnull(), <span class="st">'org_cn_head_clean'</span>].progress_apply(get_translation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This way we can get the translation of all organization titles:</p>
+<p>We add some final touches in Excel/Google Sheets and update the dataframe. This dataset is small, so it is faster to just manually remove irrelevant symbols than to craft automated solution.</p>
+<div id="953d853b" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<style type="text/css">
+</style>
+
+<table id="T_bf881" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_bf881_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Head Organization</th>
+<th id="T_bf881_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Head Organization Cleaned</th>
+<th id="T_bf881_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Head Organization English</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_bf881_row0_col0" class="data row0 col0">北京师范大学</td>
+<td id="T_bf881_row0_col1" class="data row0 col1">北京师范大学</td>
+<td id="T_bf881_row0_col2" class="data row0 col2">Beijing Normal University</td>
+</tr>
+<tr class="even">
+<td id="T_bf881_row1_col0" class="data row1 col0">“万种园”项目首席科学家</td>
+<td id="T_bf881_row1_col1" class="data row1 col1">“万种园”项目</td>
+<td id="T_bf881_row1_col2" class="data row1 col2">"Ten Thousand Plants Garden" Project</td>
+</tr>
+<tr class="odd">
+<td id="T_bf881_row2_col0" class="data row2 col0">“中国科学与人文论坛”长</td>
+<td id="T_bf881_row2_col1" class="data row2 col1">中国科学与人文论坛</td>
+<td id="T_bf881_row2_col2" class="data row2 col2">China Science and Humanities Forum</td>
+</tr>
+<tr class="even">
+<td id="T_bf881_row3_col0" class="data row3 col0">“论坛”处宣传</td>
+<td id="T_bf881_row3_col1" class="data row3 col1">“论坛”处宣传</td>
+<td id="T_bf881_row3_col2" class="data row3 col2">Publicity at the Forum</td>
+</tr>
+<tr class="odd">
+<td id="T_bf881_row4_col0" class="data row4 col0">)中国科学院</td>
+<td id="T_bf881_row4_col1" class="data row4 col1">中国科学院</td>
+<td id="T_bf881_row4_col2" class="data row4 col2">CAS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Finally, we map years, cities and article titles to the dataframe and format the titles (change case, add abbreviations). The final result will look like this:</p>
+<div id="3f094940" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+<style type="text/css">
+</style>
+
+<table id="T_ac0bd" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_ac0bd_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Organization</th>
+<th id="T_ac0bd_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Head Organization (CN)</th>
+<th id="T_ac0bd_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Head Organization (EN)</th>
+<th id="T_ac0bd_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">City (EN)</th>
+<th id="T_ac0bd_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">City (CN)</th>
+<th id="T_ac0bd_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Article</th>
+<th id="T_ac0bd_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_ac0bd_row0_col0" class="data row0 col0">北京大学</td>
+<td id="T_ac0bd_row0_col1" class="data row0 col1">北京大学</td>
+<td id="T_ac0bd_row0_col2" class="data row0 col2">Peking University</td>
+<td id="T_ac0bd_row0_col3" class="data row0 col3">北京</td>
+<td id="T_ac0bd_row0_col4" class="data row0 col4">Beijing</td>
+<td id="T_ac0bd_row0_col5" class="data row0 col5">AI助力打造科学研究新范式</td>
+<td id="T_ac0bd_row0_col6" class="data row0 col6">2024</td>
+</tr>
+<tr class="even">
+<td id="T_ac0bd_row1_col0" class="data row1 col0">北京科学智能研究院</td>
+<td id="T_ac0bd_row1_col1" class="data row1 col1">北京科学智能研究院</td>
+<td id="T_ac0bd_row1_col2" class="data row1 col2">Beijing Institute of Scientific and Intelligent Technology</td>
+<td id="T_ac0bd_row1_col3" class="data row1 col3">北京</td>
+<td id="T_ac0bd_row1_col4" class="data row1 col4">Beijing</td>
+<td id="T_ac0bd_row1_col5" class="data row1 col5">AI助力打造科学研究新范式</td>
+<td id="T_ac0bd_row1_col6" class="data row1 col6">2024</td>
+</tr>
+<tr class="odd">
+<td id="T_ac0bd_row2_col0" class="data row2 col0">中国科学院自动化研究所 复杂系统管理与控制国家重点实验室</td>
+<td id="T_ac0bd_row2_col1" class="data row2 col1">中国科学院自动化研究所</td>
+<td id="T_ac0bd_row2_col2" class="data row2 col2">Institute of Automation, CAS</td>
+<td id="T_ac0bd_row2_col3" class="data row2 col3">北京</td>
+<td id="T_ac0bd_row2_col4" class="data row2 col4">Beijing</td>
+<td id="T_ac0bd_row2_col5" class="data row2 col5">数字科学家与平行科学：AI4S和S4AI的本源与目标</td>
+<td id="T_ac0bd_row2_col6" class="data row2 col6">2024</td>
+</tr>
+<tr class="even">
+<td id="T_ac0bd_row3_col0" class="data row3 col0">澳门科技大学 创新工程学院</td>
+<td id="T_ac0bd_row3_col1" class="data row3 col1">澳门科技大学</td>
+<td id="T_ac0bd_row3_col2" class="data row3 col2">Macau University of Science and Technology</td>
+<td id="T_ac0bd_row3_col3" class="data row3 col3">澳门</td>
+<td id="T_ac0bd_row3_col4" class="data row3 col4">Macau</td>
+<td id="T_ac0bd_row3_col5" class="data row3 col5">数字科学家与平行科学：AI4S和S4AI的本源与目标</td>
+<td id="T_ac0bd_row3_col6" class="data row3 col6">2024</td>
+</tr>
+<tr class="odd">
+<td id="T_ac0bd_row4_col0" class="data row4 col0">中国科学院自动化研究所 多模态人工智能系统全国重点实验室</td>
+<td id="T_ac0bd_row4_col1" class="data row4 col1">中国科学院自动化研究所</td>
+<td id="T_ac0bd_row4_col2" class="data row4 col2">Institute of Automation, CAS</td>
+<td id="T_ac0bd_row4_col3" class="data row4 col3">北京</td>
+<td id="T_ac0bd_row4_col4" class="data row4 col4">Beijing</td>
+<td id="T_ac0bd_row4_col5" class="data row4 col5">数字科学家与平行科学：AI4S和S4AI的本源与目标</td>
+<td id="T_ac0bd_row4_col6" class="data row4 col6">2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="fund-projects" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="fund-projects"><span class="header-section-number">2.5</span> Fund Projects</h2>
+<p>Finally, we need to clean the data about associated fund projects.</p>
+<div id="c83bea1c" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fund[<span class="st">'fund_project'</span>] <span class="op">=</span> fund[<span class="st">'fund_project'</span>].<span class="bu">str</span>.replace(<span class="st">'基金项目：'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>fund[<span class="st">'fund_project'</span>] <span class="op">=</span> (fund[<span class="st">'fund_project'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">'，'</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                            .<span class="bu">str</span>.replace(<span class="st">';'</span>, <span class="st">'，'</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                            .<span class="bu">str</span>.replace(<span class="vs">r'\('</span>, <span class="st">'（'</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                                            .<span class="bu">str</span>.replace(<span class="vs">r'\)'</span>, <span class="st">'）'</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                                            .<span class="bu">str</span>.replace(<span class="st">'!'</span>, <span class="st">'，'</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                                            .<span class="bu">str</span>.replace(<span class="st">'；'</span>, <span class="st">'，'</span>, regex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a2b809b1" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> replace_commas_in_brackets(text):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> re.sub(<span class="vs">r'[（(](.*?)[）)]'</span>, <span class="kw">lambda</span> m: re.sub(<span class="vs">r'[!,;，；]'</span>, <span class="st">'、'</span>, m.group()), text)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fund[<span class="st">'fund_project'</span>] <span class="op">=</span> fund[<span class="st">'fund_project'</span>].<span class="bu">apply</span>(replace_commas_in_brackets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The final dataframe looks this way:</p>
+<div id="bd3a93b8" class="cell" data-execution_count="117">
+<div class="cell-output cell-output-display" data-execution_count="117">
+<div>
+<style type="text/css">
+</style>
+
+<table id="T_9b98e" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th id="T_9b98e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Year</th>
+<th id="T_9b98e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Article</th>
+<th id="T_9b98e_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Fund Project</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_9b98e_row0_col0" class="data row0 col0">2024</td>
+<td id="T_9b98e_row0_col1" class="data row0 col1">面向模拟智能的计算系统</td>
+<td id="T_9b98e_row0_col2" class="data row0 col2">国家杰出青年科学基金（T2125013）</td>
+</tr>
+<tr class="even">
+<td id="T_9b98e_row1_col0" class="data row1 col0">2024</td>
+<td id="T_9b98e_row1_col1" class="data row1 col1">数字科学家与平行科学：AI4S和S4AI的本源与目标</td>
+<td id="T_9b98e_row1_col2" class="data row1 col2">澳门科学技术发展基金（0093/2023/RIA2）</td>
+</tr>
+<tr class="odd">
+<td id="T_9b98e_row2_col0" class="data row2 col0">2024</td>
+<td id="T_9b98e_row2_col1" class="data row2 col1">数字科学家与平行科学：AI4S和S4AI的本源与目标</td>
+<td id="T_9b98e_row2_col2" class="data row2 col2">国家自然科学基金（61533019）</td>
+</tr>
+<tr class="even">
+<td id="T_9b98e_row3_col0" class="data row3 col0">2024</td>
+<td id="T_9b98e_row3_col1" class="data row3 col1">AI for Technology：技术智能在高技术领域的应用实践与未来展望</td>
+<td id="T_9b98e_row3_col2" class="data row3 col2">国家自然科学基金（61925208、U22A2028）</td>
+</tr>
+<tr class="odd">
+<td id="T_9b98e_row4_col0" class="data row4 col0">2024</td>
+<td id="T_9b98e_row4_col1" class="data row4 col1">AI for Technology：技术智能在高技术领域的应用实践与未来展望</td>
+<td id="T_9b98e_row4_col2" class="data row4 col2">中国科学院稳定支持基础研究领域青年团队计划（YSBR-029）</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../bcas/about_bcas.html" class="pagination-link" aria-label="CAS &amp; Science Policy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">CAS &amp; Science Policy</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../bcas/bcas_eda.html" class="pagination-link" aria-label="Exploratory Data Analysis">
+        <span class="nav-page-text">Exploratory Data Analysis</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2024, Dzmitry Mazanik</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
