@@ -6,6 +6,20 @@ about:
 
 ---
 
-# In China science is strategic.  
+# Welcome to China Science Vector  
 
-This is a project for analysis of Science & Technology Trends according to Chinese strategic think tanks.
+Hi! I'm Dzmitry, a Belarusian China Studies analyst based at the Center for System Analysis & Strategic Research of the National Academy of Sciences. My primary focus lies in China's Science & Technology domain and industrial policy.
+
+In an era where information about China is paradoxically both abundant and increasingly restricted, I'am learning data science techniques to gain deeper insights into Chinese technology. This approach allows me to navigate the complex landscape of China's tech sector more effectively.
+
+China Science Vector is my little laboratory for China and technology data analysis case studies. We like .csv files a lot!
+
+Through my work here, I aim to:
+
+• Uncover and share valuable insights about China
+
+• Demonstrate the power of data science in China Studies
+
+• Share and learn new techniques.
+
+I welcome your engagement! Whether you have suggestions, are interested in collaboration, or notice any mistakes, please don't hesitate to reach out.
