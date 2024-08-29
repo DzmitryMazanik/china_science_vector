@@ -98,5 +98,5 @@ The dataset consists of 7045 publications, dated between 1986–2023. For topic 
 
 The textual data (titles, keywords, abstracts, and similar references) was used to build a topic model of the dataset with a total of 100 topics to preserve the granularity. To get a broader picture we grouped these topics by science subfield, field, and domain, according to the Science-Metrix classification.[^7]
 
-[^6]: For more details see [Building Topic Model](2_bcas_topic_model_quarto.ipynb) .
+[^6]: For more details see [Building Topic Model](bcas_topic_model.ipynb) .
 [^7]: https://www.science-metrix.com/classification/

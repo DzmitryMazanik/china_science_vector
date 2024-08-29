@@ -5,12 +5,12 @@ project:
 website:
   title: "China Science Vector"
   image: "" #img/my_image.jpg
-  favicon: "img/favicon.png" 
+  favicon: "img/favicon.svg" 
 
   navbar:
     background: primary
     pinned: false
-    logo: "" #"img/favicon.png"
+    logo: "" #/img/logo.png
     left:
       - href: bcas/bcas.qmd
         text: BCAS
@@ -19,10 +19,12 @@ website:
    # social media handles
     right:
         - icon: linkedin
-          href: www.linkedin.com/in/dzmitry-mazanik-a84b51246
+          href: https://www.linkedin.com/in/
         - icon: envelope
           aria-label: email
           href: "mailto:dmitrymazanik42@gmail.com" 
+        - icon: github
+          href: https://github.com/DzmitryMazanik/china_science_vector
   
   sidebar:
     - id: id-bcas

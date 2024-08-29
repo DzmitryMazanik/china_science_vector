@@ -1,4 +1,5 @@
 ---
+title: "Welcome to .CSV"
 about:
   template: jolla
   id: about-block
@@ -6,20 +7,10 @@ about:
 
 ---
 
-# Welcome to China Science Vector  
+I’m Dzmitry, a China analyst at the Center for System Analysis & Strategic Research in Minsk, Belarus. My primary focus is on China’s science and technology policies and industrial strategies.
 
-Hi! I'm Dzmitry, a Belarusian China Studies analyst based at the Center for System Analysis & Strategic Research of the National Academy of Sciences. My primary focus lies in China's Science & Technology domain and industrial policy.
+In today’s world, information about China is both abundant and increasingly restricted, creating a unique challenge for analysts. To navigate this complex landscape, I’m learning data science techniques that will enhance my understanding of Chinese technology.
 
-In an era where information about China is paradoxically both abundant and increasingly restricted, I'am learning data science techniques to gain deeper insights into Chinese technology. This approach allows me to navigate the complex landscape of China's tech sector more effectively.
+China Science Vector is my personal lab for analyzing data related to China and technology. Here I share my case studies and analyze a lot of .csv!
 
-China Science Vector is my little laboratory for China and technology data analysis case studies. We like .csv files a lot!
-
-Through my work here, I aim to:
-
-• Uncover and share valuable insights about China
-
-• Demonstrate the power of data science in China Studies
-
-• Share and learn new techniques.
-
-I welcome your engagement! Whether you have suggestions, are interested in collaboration, or notice any mistakes, please don't hesitate to reach out.
+I invite your engagement! Whether you have suggestions, are interested in collaboration, or notice any errors, please don’t hesitate to reach out.
