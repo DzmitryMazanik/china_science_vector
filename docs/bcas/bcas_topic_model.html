@@ -147,7 +147,7 @@ require(['plotly'], function(Plotly) {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../bcas/bcas.html"> 
+    <a class="nav-link" href="../bcas/bcas_project.html"> 
 <span class="menu-text">BCAS</span></a>
   </li>  
   <li class="nav-item">
@@ -157,7 +157,7 @@ require(['plotly'], function(Plotly) {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/"> <i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/dzmitry-mazanik-a84b51246/"> <i class="bi bi-linkedin" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -343,7 +343,7 @@ require(['plotly'], function(Plotly) {
 </div>
 <p>Once the model is fitted, we can begin examining the results. BERTopic generates a topic label by identifying the most relevant words within each topic, providing a concise representation of the underlying theme. This label serves as a quick summary, capturing the essence of the topic based on the most significant terms.</p>
 <div class="cell" data-execution_count="13" data-tbl-cap-location="top">
-<div id="tbl-topic-info" class="cell quarto-float anchored" data-execution_count="13" data-tbl-cap-location="top">
+<div id="tbl-topic-info" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="13">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-topic-info-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: BERTopic Model of BCAS Dataset.
@@ -452,7 +452,7 @@ Table&nbsp;1: BERTopic Model of BCAS Dataset.
 <p>These topics highlight the emphasis on innovation, scientific research, and environmental concerns, reflecting the strategic focus areas of the publications.</p>
 <p>However, a significant portion of the documents—nearly 37%—fall into the outliers. This indicates a substantial number of articles that do not neatly fit into the defined topics, which could suggest a wide range of unique or less common subjects being covered. While this diversity is valuable, the high percentage of outliers also suggests that there may be a considerable amount of content that is either very specific or not directly aligned with the main thematic clusters.</p>
 <div class="cell" data-execution_count="139" data-tbl-cap-location="top">
-<div id="tbl-topic-stats" class="cell quarto-float anchored" data-execution_count="139" data-tbl-cap-location="top">
+<div id="tbl-topic-stats" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="139">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-topic-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: Topic Statistics.
@@ -914,7 +914,7 @@ if (outputEl) {{
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"All topics processed."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="32" data-tbl-cap-location="top">
-<div id="tbl-topic-gemini" class="cell quarto-float anchored" data-execution_count="32" data-tbl-cap-location="top">
+<div id="tbl-topic-gemini" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="32">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-topic-gemini-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4: Gemini Topics Summaries.
@@ -1004,7 +1004,7 @@ Table&nbsp;4: Gemini Topics Summaries.
 </blockquote>
 <p>Applying this classification system allows us to map our 100 topics to a structured framework, providing a clearer overview and uncovering broader trends. This approach offers flexibility, letting us choose different levels of granularity—whether analyzing data at the topic, subfield, field, or domain level.</p>
 <div class="cell" data-execution_count="42" data-tbl-cap-location="top">
-<div id="tbl-ontology" class="cell quarto-float anchored" data-execution_count="42" data-tbl-cap-location="top">
+<div id="tbl-ontology" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="42">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ontology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5: Science-Metrix Ontology Example.
@@ -1152,7 +1152,7 @@ Table&nbsp;5: Science-Metrix Ontology Example.
 </div>
 <p>The Gemini classification is pretty decent, but it’s not perfect—manual review and tweaking are still necessary. Here’s an example of how we match topics to their most fitting subfields:</p>
 <div class="cell" data-execution_count="45" data-tbl-cap-location="top">
-<div id="tbl-topic-subfield" class="cell quarto-float anchored" data-execution_count="45" data-tbl-cap-location="top">
+<div id="tbl-topic-subfield" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="45">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-topic-subfield-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6: Classification of Topics by Sybfields.”
@@ -1221,7 +1221,7 @@ Table&nbsp;6: Classification of Topics by Sybfields.”
 </div>
 <p>Next we just need to match subfields with associated fields and domains.</p>
 <div class="cell" data-execution_count="50" data-tbl-cap-location="top">
-<div id="tbl-topic-ontology-full" class="cell quarto-float anchored" data-execution_count="50" data-tbl-cap-location="top">
+<div id="tbl-topic-ontology-full" class="cell quarto-float anchored" data-tbl-cap-location="top" data-execution_count="50">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-topic-ontology-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;7: BCAS Topics Full Science-Metrix Ontology.
