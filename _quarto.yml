@@ -25,6 +25,8 @@ website:
         - icon: envelope
           aria-label: email
           href: "mailto:dmitrymazanik42@gmail.com" 
+        - icon: github
+          href: https://github.com/DzmitryMazanik/china_science_vector
   
   sidebar:
     - id: id-bcas

@@ -16,5 +16,14 @@
   },
   "bcas/1_bcas_eda_quarto.ipynb": {
     "1_bcas_eda_quarto.html": "af9cb511"
+  },
+  "bcas/3_bcas_topic_analysis_quarto.ipynb": {
+    "3_bcas_topic_analysis_quarto.html": "791fc110"
+  },
+  "bcas/0_bcas_dataset_scraping_quarto.ipynb": {
+    "0_bcas_dataset_scraping_quarto.html": "0e9e904f"
+  },
+  "bcas/2_bcas_topic_model_quarto.ipynb": {
+    "2_bcas_topic_model_quarto.html": "3bb3cef0"
   }
 }
