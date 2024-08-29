@@ -25,5 +25,29 @@
   },
   "bcas/2_bcas_topic_model_quarto.ipynb": {
     "2_bcas_topic_model_quarto.html": "3bb3cef0"
+  },
+  "bcas/bcas_dataset_scraping_code.ipynb": {
+    "bcas_dataset_scraping_code.html": "a1fe50ca"
+  },
+  "bcas/bcas_topic_model_code.ipynb": {
+    "bcas_topic_model_code.html": "2f145244"
+  },
+  "bcas/bcas_topic_analysis.ipynb": {
+    "bcas_topic_analysis.html": "34c0ca99"
+  },
+  "bcas/bcas_dataset_scraping.ipynb": {
+    "bcas_dataset_scraping.html": "f15bf959"
+  },
+  "bcas/bcas_eda_code.ipynb": {
+    "bcas_eda_code.html": "ad45cde5"
+  },
+  "bcas/bcas_topic_model.ipynb": {
+    "bcas_topic_model.html": "1152f77a"
+  },
+  "bcas/bcas_eda.ipynb": {
+    "bcas_eda.html": "c310802b"
+  },
+  "bcas/bcas_topic_analysis_code.ipynb": {
+    "bcas_topic_analysis_code.html": "c3a1d182"
   }
 }

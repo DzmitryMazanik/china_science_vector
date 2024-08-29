@@ -12,8 +12,6 @@ website:
     pinned: false
     logo: "" #/img/logo.png
     left:
-      - href: about.qmd
-        text: About
       - href: bcas/bcas.qmd
         text: BCAS
       - href: bcae/about_bcae.qmd
@@ -35,17 +33,17 @@ website:
       background: none
       contents:
         - bcas/about_bcas.qmd
-        - bcas/0_bcas_dataset_scraping_quarto.ipynb
-        - bcas/1_bcas_eda_quarto.ipynb
-        - bcas/2_bcas_topic_model_quarto.ipynb
-        - bcas/3_bcas_topic_analysis_quarto.ipynb
+        - bcas/bcas_dataset_scraping.ipynb
+        - bcas/bcas_eda_quarto.ipynb
+        - bcas/bcas_topic_model.ipynb
+        - bcas/bcas_topic_analysis.ipynb
       collapse-level: 2
   search: 
     location: navbar
 
   page-navigation: true
   back-to-top-navigation: true
-  page-footer: "By Dzmitry Mazanik, 2024" 
+  page-footer: "Copyright 2024, Dzmitry Mazanik" 
 
 format:
   html:

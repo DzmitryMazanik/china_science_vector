@@ -4,12 +4,12 @@ about:
   template: jolla
   id: about-block
   image: ""
-  
+
 ---
 
-Hi! I'm Dzmitry, a China analyst based at the Center for System Analysis & Strategic Research[^1] of the National Academy of Sciences. My primary focus lies in China's Science & Technology and industrial policy.
+Hi! I'm Dzmitry, a China analyst based at the Center for System Analysis & Strategic Research of the National Academy of Sciences. My primary focus lies in China's Science & Technology and industrial policy.
 
-In an era where information about China is paradoxically both abundant and increasingly restricted, I'am learning data science techniques to gain deeper insights into Chinese technology. This approach allows me to navigate the complex landscape of China's tech sector more effectively.[^2]
+In an era where information about China is paradoxically both abundant and increasingly restricted, I'am learning data science techniques to gain deeper insights into Chinese technology. This approach allows me to navigate the complex landscape of China's tech sector more effectively.
 
 China Science Vector is my little laboratory for China and technology data analysis case studies. We like .csv files a lot!
 
