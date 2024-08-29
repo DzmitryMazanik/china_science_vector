@@ -1,0 +1,44 @@
+{
+  "index.qmd": {
+    "index.html": "d9e44fe1"
+  },
+  "bcae/about_bcae.qmd": {
+    "about_bcae.html": "05c0567a"
+  },
+  "bcae/bcae_eda_code.ipynb": {
+    "bcae_eda_code.html": "635879cd"
+  },
+  "bcas/bcas_chapters.qmd": {
+    "bcas_chapters.html": "2be873af"
+  },
+  "bcas/bcas_dataset_scraping_code.ipynb": {
+    "bcas_dataset_scraping_code.html": "f0ead86c"
+  },
+  "bcas/bcas_topic_model_code.ipynb": {
+    "bcas_topic_model_code.html": "c35d4176"
+  },
+  "bcas/bcas_topic_analysis.ipynb": {
+    "bcas_topic_analysis.html": "fa0d5a82"
+  },
+  "bcas/bcas_dataset_scraping.ipynb": {
+    "bcas_dataset_scraping.html": "6b0dc5b1"
+  },
+  "bcas/bcas_eda_code.ipynb": {
+    "bcas_eda_code.html": "0c0836f6"
+  },
+  "bcas/bcas_topic_model.ipynb": {
+    "bcas_topic_model.html": "13c71418"
+  },
+  "bcas/about_bcas.qmd": {
+    "about_bcas.html": "ab436d70"
+  },
+  "bcas/bcas_eda.ipynb": {
+    "bcas_eda.html": "65174c4b"
+  },
+  "bcas/bcas_topic_analysis_code.ipynb": {
+    "bcas_topic_analysis_code.html": "0b5d5eeb"
+  },
+  "bcas/bcas_project.qmd": {
+    "bcas_project.html": "b97b813d"
+  }
+}
